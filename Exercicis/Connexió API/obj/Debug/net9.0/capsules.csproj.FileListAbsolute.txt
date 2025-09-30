@@ -1,0 +1,31 @@
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\bin\Debug\net9.0\capsules.exe
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\bin\Debug\net9.0\capsules.deps.json
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\bin\Debug\net9.0\capsules.runtimeconfig.json
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\bin\Debug\net9.0\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\bin\Debug\net9.0\capsules.pdb
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.AssemblyInfoInputs.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.AssemblyInfo.cs
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.csproj.CoreCompileInputs.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\refint\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.pdb
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\capsules.genruntimeconfig.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\capsules\obj\Debug\net9.0\ref\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\bin\Debug\net9.0\capsules.exe
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\bin\Debug\net9.0\capsules.deps.json
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\bin\Debug\net9.0\capsules.runtimeconfig.json
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\bin\Debug\net9.0\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\bin\Debug\net9.0\capsules.pdb
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.AssemblyInfoInputs.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.AssemblyInfo.cs
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.csproj.CoreCompileInputs.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\refint\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.pdb
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.genruntimeconfig.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\ref\capsules.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.csproj.AssemblyReference.cache
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\LES\OneDrive\C#\Data_acces\Accés a dades\Exercicis\Connnexió API\obj\Debug\net9.0\capsules.csproj.Up2Date
