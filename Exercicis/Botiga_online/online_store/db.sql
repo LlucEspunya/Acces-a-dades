@@ -19,7 +19,7 @@ CREATE TABLE "Producte" (
 	FOREIGN KEY("id_tipus") REFERENCES "Familia (id)"
 );
 
-CREATE TABLE "CarritoCompra"(
+CREATE TABLE "Carrito"(
     "ID" UNIQUEIDENTIFIER,
     "nom" varchar(10),
     PRIMARY KEY ("ID"),
@@ -30,6 +30,6 @@ CREATE TABLE "CarritoProd"(
     "ID_CARR" UNIQUEIDENTIFIER,
     "ID_PROD" UNIQUEIDENTIFIER,
     PRIMARY KEY ("ID"),
-    FOREIGN KEY ("ID_CARR") REFERENCES "CarritoCompra (ID)",
+    FOREIGN KEY ("ID_CARR") REFERENCES "Carrito (ID)",
     FOREIGN KEY ("ID_PROD") REFERENCES "Producte (ID)"
 );
