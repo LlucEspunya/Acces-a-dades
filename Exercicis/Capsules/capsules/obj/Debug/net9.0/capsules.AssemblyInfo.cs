@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("capsules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd1969cd70cd9d4089a952157b576d96b9b231f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("capsules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("capsules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
