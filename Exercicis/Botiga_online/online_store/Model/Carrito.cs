@@ -1,5 +1,3 @@
-using Newtonsoft.Josn;
-
 namespace store.model;
 
 public class Carro
