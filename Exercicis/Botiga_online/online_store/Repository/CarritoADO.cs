@@ -1,73 +1,72 @@
 using Microsoft.Data.SqlClient;
 using static System.Console;
-using dbdemo.Services;
+using Store.Services;
+using Store.Model;
 
-namespace dbdemo.Repository;
+namespace Store.Repository;
 
-class CarritoADO
+static class CarritoADO
 {
-    public Guid ID { get; set; }
-    public string nom { get; set; } = "";
+    // public Guid ID { get; set; }
+    // public string name { get; set; } = "";
 
-
-    public void Insert(DatabaseConnection dbConn)
+    public static void Insert(DatabaseConnection dbConn, Carrito carrito)
     {
 
         dbConn.Open();
 
-        string sql = @"INSERT INTO Carritos (ID, nom)
-                        VALUES (@ID, @nom)";
+        string sql = @"INSERT INTO Carritos (ID, name)
+                        VALUES (@ID, @name)";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
-        cmd.Parameters.AddWithValue("@ID", ID);
-        cmd.Parameters.AddWithValue("@nom", nom);
-
+        cmd.Parameters.AddWithValue("@ID", carrito.ID);
+        cmd.Parameters.AddWithValue("@name", carrito.ID);
 
         int rows = cmd.ExecuteNonQuery();
         Console.WriteLine($"{rows} fila inserida.");
         dbConn.Close();
     }
 
-    public static List<CarritoADO> GetAll(DatabaseConnection dbConn)
+    public static List<Carrito> GetAll(DatabaseConnection dbConn)
     {
-        List<CarritoADO> carritos = new();
+        List<Carrito> Carritos = new();
 
         dbConn.Open();
-        string sql = "SELECT ID, nom FROM Carrito";
+        string sql = "SELECT ID, name FROM Carritos";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         using SqlDataReader reader = cmd.ExecuteReader();
 
         while (reader.Read())
         {
-            carritoss.Add(new ProductADO
+            Carritos.Add(new Carrito
             {
                 ID = reader.GetGuid(0),
-                nom = reader.GetString(1),
+                name = reader.GetString(2),
             });
         }
 
         dbConn.Close();
-        return carritos;
+        return Carritos;
     }
 
-    public static CarritoADO? GetById(DatabaseConnection dbConn, Guid id)
+    public static Carrito? GetById(DatabaseConnection dbConn, Guid ID)
     {
         dbConn.Open();
-        string sql = "SELECT ID, nom FROM Carrito WHERE ID = @ID";
+        string sql = "SELECT ID, name FROM Carritos WHERE ID = @ID";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         cmd.Parameters.AddWithValue("@ID", ID);
 
         using SqlDataReader reader = cmd.ExecuteReader();
-        CarritoADO? carrito = null;
+        Carrito? carrito = null;
 
         if (reader.Read())
         {
-            carrito = new CarritoADO
+            carrito = new Carrito
             {
                 ID = reader.GetGuid(0),
-                nom = reader.GetString(1),
+                name = reader.GetString(2),
             };
         }
 
