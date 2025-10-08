@@ -1,7 +1,7 @@
-namespace store.model;
+namespace Store.Model;
 
-public class Carro
+public class Carrito
 {
-    public Guid ID { get; set; }  
-    public string NAME { get; set; } = "";
+    public Guid ID { get; set; }
+    public string name { get; set; } = "";
 };
