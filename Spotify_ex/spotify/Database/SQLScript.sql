@@ -76,5 +76,18 @@ CREATE TABLE Profiles (
 
 CREATE TABLE Images (
 	ID uniqueidentifier PRIMARY KEY
+    Porfile_ID UNIQUEIDENTIFIER NOT NULL,
+    URL NVARCHAR(255) NOT NULL,
+    FOREIGN KEY (Porfile_ID) REFERENCES Porfiles(ID)
 );
+
+CREATE TABLE PorfilesImages (
+	ID uniqueidentifier PRIMARY KEY,
+	Porfile_ID uniqueidentifier NOT NULL,
+	Image_ID uniqueidentifier NOT NULL,
+    FOREIGN KEY (Porfile_ID) REFERENCES Porfiles(ID),
+    FOREIGN KEY (Image_ID) REFERENCES Images(ID),
+    CONSTRAINT unique_porfile_image UNIQUE (Porfile_ID, Image_ID)
+);
+
 

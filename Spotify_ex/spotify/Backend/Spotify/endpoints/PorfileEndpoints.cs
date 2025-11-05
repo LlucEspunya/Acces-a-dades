@@ -52,7 +52,28 @@ public static class PorfileEndpoints
             PorfileADO.Update(dbConn, existing);
             return Results.Ok(existing);
         });
+
         app.MapDelete("/Porfiles/{ID}", (Guid ID) => PorfileADO.Delete(dbConn, ID) ? Results.NoContent() : Results.NotFound());
+
+        app.MapPost("/Porfile/{ID}/upload", async (Guid id, IFormFileCollection images) =>
+        {
+            if (images == null || images.Count == 0)
+            return Results.BadRequest(new { message = "No s'ha rebut cap imatge." });
+            Song? song = SongADO.GetById(dbConn, id);
+            if (song is null)
+            return Results.NotFound(new { message = $"media amb Id {id} no trobat." });
+                
+            ImageService imageService = new();
+
+            for (int i = 0; i < images.Count; i++)
+            {
+                Image? image = await imageService.ProcessAndInsertUploadedImage(dbConn, ID, images[i]);
+
+                ImageADO.Insert(dbConn, image);
+            }
+
+            return Results.Ok(new { message = "Imatge pujada correctament."});
+        }).DisableAntiforgery();
     }
 }
 
