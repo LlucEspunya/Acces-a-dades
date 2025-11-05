@@ -11,14 +11,15 @@ class PorfileADO
     {
         dbConn.Open();
 
-        string sql = @"INSERT INTO Porfiles (ID, Name, Description, Status)
-                        VALUES (@ID, @Name, @Description, @Status)";
+        string sql = @"INSERT INTO Porfiles (ID, Name, Description, Status, User_ID)
+                        VALUES (@ID, @Name, @Description, @Status, @User_ID)";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         cmd.Parameters.AddWithValue("@ID", porfile.ID);
         cmd.Parameters.AddWithValue("@Name", porfile.Name);
         cmd.Parameters.AddWithValue("@Description", porfile.Description);
         cmd.Parameters.AddWithValue("@Status", porfile.Status);
+        cmd.Parameters.AddWithValue("@User_ID", porfile.User_ID);
 
 
         cmd.ExecuteNonQuery();
@@ -29,7 +30,7 @@ class PorfileADO
         List<Porfile> porfiles = new();
 
         dbConn.Open();
-        string sql = "SELECT ID, Name, Description, Status FROM Porfiles";
+        string sql = "SELECT ID, Name, Description, Status, User_ID FROM Porfiles";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         using SqlDataReader reader = cmd.ExecuteReader();
@@ -41,7 +42,8 @@ class PorfileADO
                 ID = reader.GetGuid(0),
                 Name = reader.GetString(1),
                 Description = reader.GetString(2),
-                Status = reader.GetString(3)
+                User_ID = reader.GetGuid(3),
+                Status = reader.GetString(4),
             });
         }
         dbConn.Close();
@@ -50,7 +52,7 @@ class PorfileADO
     public static Porfile? GetById(DatabaseConnection dbConn, Guid ID)
     {
         dbConn.Open();
-        string sql = "SELECT ID, Name, Description, Status FROM Porfiles WHERE ID = @ID";
+        string sql = "SELECT ID, Name, Description, Status, User_ID FROM Porfiles WHERE ID = @ID";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         cmd.Parameters.AddWithValue("@ID", ID);
@@ -65,7 +67,8 @@ class PorfileADO
                 ID = reader.GetGuid(0),
                 Name = reader.GetString(1),
                 Description = reader.GetString(2),
-                Status = reader.GetString(3)
+                Status = reader.GetString(3),
+                User_ID = reader.GetGuid(4)
             };
         }
 
@@ -80,13 +83,15 @@ class PorfileADO
                         SET Id = @ID,
                         Name = @Name,
                         Description = @Description,
-                        Status = @Status
+                        Status = @Status,
+                        User_ID = @User_ID
                         WHERE ID = @ID";
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         cmd.Parameters.AddWithValue("@ID", porfile.ID);
         cmd.Parameters.AddWithValue("@Name", porfile.Name);
         cmd.Parameters.AddWithValue("@Description", porfile.Description);
         cmd.Parameters.AddWithValue("@Status", porfile.Status);
+        cmd.Parameters.AddWithValue("@User_ID", porfile.User_ID);
 
         int rows = cmd.ExecuteNonQuery();
 

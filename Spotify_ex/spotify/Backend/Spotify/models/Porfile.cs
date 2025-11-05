@@ -9,5 +9,7 @@ public class Porfile
     public string Description { get; set; }
     
     public string Status { get; set; }   
+
+    public Guid User_ID { get; set; }
     
 }

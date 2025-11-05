@@ -17,7 +17,8 @@ public static class PorfileEndpoints
                 ID = Guid.NewGuid(),
                 Name = req.Name,
                 Description = req.Description,
-                Status = req.Status
+                Status = req.Status,
+                User_ID = req.User_ID
             };
 
             PorfileADO.Insert(dbConn, porfile);
@@ -48,6 +49,7 @@ public static class PorfileEndpoints
             existing.Name = req.Name;
             existing.Description = req.Description;
             existing.Status = req.Status;
+            existing.User_ID = req.User_ID;
 
             PorfileADO.Update(dbConn, existing);
             return Results.Ok(existing);
@@ -55,26 +57,26 @@ public static class PorfileEndpoints
 
         app.MapDelete("/Porfiles/{ID}", (Guid ID) => PorfileADO.Delete(dbConn, ID) ? Results.NoContent() : Results.NotFound());
 
-        app.MapPost("/Porfile/{ID}/upload", async (Guid id, IFormFileCollection images) =>
-        {
-            if (images == null || images.Count == 0)
-            return Results.BadRequest(new { message = "No s'ha rebut cap imatge." });
-            Song? song = SongADO.GetById(dbConn, id);
-            if (song is null)
-            return Results.NotFound(new { message = $"media amb Id {id} no trobat." });
+        // app.MapPost("/Porfile/{ID}/upload", async (Guid id, IFormFileCollection images) =>
+        // {
+        //     if (images == null || images.Count == 0)
+        //     return Results.BadRequest(new { message = "No s'ha rebut cap imatge." });
+        //     Song? song = SongADO.GetById(dbConn, id);
+        //     if (song is null)
+        //     return Results.NotFound(new { message = $"media amb Id {id} no trobat." });
                 
-            ImageService imageService = new();
+        //     ImageService imageService = new();
 
-            for (int i = 0; i < images.Count; i++)
-            {
-                Image? image = await imageService.ProcessAndInsertUploadedImage(dbConn, ID, images[i]);
+        //     for (int i = 0; i < images.Count; i++)
+        //     {
+        //         Image? image = await imageService.ProcessAndInsertUploadedImage(dbConn, id, images[i]);
 
-                ImageADO.Insert(dbConn, image);
-            }
+        //         ImageADO.Insert(dbConn, image);
+        //     }
 
-            return Results.Ok(new { message = "Imatge pujada correctament."});
-        }).DisableAntiforgery();
+        //     return Results.Ok(new { message = "Imatge pujada correctament."});
+        // }).DisableAntiforgery();
     }
 }
 
-public record PorfileRequest(Guid ID, string Name, string Description, string Status);
+public record PorfileRequest(Guid ID, string Name, string Description, string Status, Guid User_ID);

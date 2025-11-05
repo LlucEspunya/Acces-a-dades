@@ -69,8 +69,9 @@ CREATE TABLE Permissions (
 CREATE TABLE Profiles (
     ID uniqueidentifier PRIMARY KEY,
 	Name varchar(100) NULL,
-	Description varchar(100) NULL,
-	Status varchar(1) NULL,
+	Description varchar(100),
+	Status varchar(1) NOT NULL,
+    User_ID uniqueidentifier NOT NULL,
 	FOREIGN KEY (User_ID) REFERENCES Users(ID) -- NO APLICAT A L'API!
 );
 
