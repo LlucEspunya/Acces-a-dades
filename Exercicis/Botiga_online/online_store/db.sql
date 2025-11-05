@@ -19,9 +19,9 @@ CREATE TABLE "Producte" (
 	FOREIGN KEY("id_tipus") REFERENCES "Familia (id)"
 );
 
-CREATE TABLE "Carrito"(
+CREATE TABLE "carritos"(
     "ID" UNIQUEIDENTIFIER,
-    "nom" varchar(10),
+    "name" varchar(10),
     PRIMARY KEY ("ID"),
 );
 

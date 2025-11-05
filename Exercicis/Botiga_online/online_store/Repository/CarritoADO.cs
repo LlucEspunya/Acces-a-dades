@@ -7,9 +7,6 @@ namespace Store.Repository;
 
 static class CarritoADO
 {
-    // public Guid ID { get; set; }
-    // public string name { get; set; } = "";
-
     public static void Insert(DatabaseConnection dbConn, Carrito carrito)
     {
 
@@ -42,7 +39,7 @@ static class CarritoADO
             Carritos.Add(new Carrito
             {
                 ID = reader.GetGuid(0),
-                name = reader.GetString(2),
+                name = reader.GetString(1),
             });
         }
 
