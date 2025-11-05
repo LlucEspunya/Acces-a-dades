@@ -24,6 +24,35 @@ public static class PorfileEndpoints
 
             return Results.Created($"/Porfiles/{porfile.ID}", porfile);
         });
+
+        app.MapGet("/Porfiles", () =>
+        {
+            List<Porfile> porfiles = PorfileADO.GetAll(dbConn);
+            return Results.Ok(porfiles);
+        });
+
+        app.MapGet("/Porfiles/{Id}", (Guid ID) =>
+        {
+            Porfile porfile = PorfileADO.GetById(dbConn, ID);
+
+            return porfile is not null
+            ? Results.Ok(porfile)
+            : Results.NotFound(new { message = $"Porfile with Id {ID} not found" });
+        });
+        app.MapPut("/Porfiles/{ID}", (Guid ID, PorfileRequest req) =>
+        {
+            var existing = PorfileADO.GetById(dbConn, ID);
+            if (existing == null)
+                return Results.NotFound();
+
+            existing.Name = req.Name;
+            existing.Description = req.Description;
+            existing.Status = req.Status;
+
+            PorfileADO.Update(dbConn, existing);
+            return Results.Ok(existing);
+        });
+        app.MapDelete("/Porfiles/{ID}", (Guid ID) => PorfileADO.Delete(dbConn, ID) ? Results.NoContent() : Results.NotFound());
     }
 }
 
