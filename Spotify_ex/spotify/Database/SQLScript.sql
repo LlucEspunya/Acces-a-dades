@@ -62,3 +62,15 @@ CREATE TABLE Permissions (
     Code NVARCHAR(5)
     Name NVARCHAR(30)
 )
+
+
+-- SQL per afegir la taula Perfils a la base de dades (Examen)
+
+CREATE TABLE Spotify.dbo.Profile (
+	Name varchar(100) NULL,
+	Description varchar(100) NULL,
+	Status varchar(1) NULL,
+	ID uniqueidentifier NOT NULL,
+	CONSTRAINT Profile_PK PRIMARY KEY (ID),
+	CONSTRAINT Profile_Users_FK FOREIGN KEY (ID) REFERENCES Spotify.dbo.Users(ID)
+);
