@@ -20,5 +20,6 @@ WebApplication app = builder.Build();
 app.MapUserEndpoints(dbConn);
 app.MapSongEndpoints(dbConn);
 app.MapPlaylistEndpoints(dbConn);
+app.MapPorfileEndpoints(dbConn);
 
 app.Run("http://localhost:5000");
