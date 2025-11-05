@@ -3,6 +3,7 @@ using Spotify.Model;
 using Spotify.Services;
 using System.ComponentModel;
 using System.Net;
+using System.Reflection;
 
 namespace Spotify.Endpoints;
 
@@ -57,25 +58,14 @@ public static class PorfileEndpoints
 
         app.MapDelete("/Porfiles/{ID}", (Guid ID) => PorfileADO.Delete(dbConn, ID) ? Results.NoContent() : Results.NotFound());
 
-        // app.MapPost("/Porfile/{ID}/upload", async (Guid id, IFormFileCollection images) =>
-        // {
-        //     if (images == null || images.Count == 0)
-        //     return Results.BadRequest(new { message = "No s'ha rebut cap imatge." });
-        //     Song? song = SongADO.GetById(dbConn, id);
-        //     if (song is null)
-        //     return Results.NotFound(new { message = $"media amb Id {id} no trobat." });
-                
-        //     ImageService imageService = new();
+        app.MapPost("/Porfile/{ID}/upload", async (Guid id, IFormFileCollection images) =>
+        {
 
-        //     for (int i = 0; i < images.Count; i++)
-        //     {
-        //         Image? image = await imageService.ProcessAndInsertUploadedImage(dbConn, id, images[i]);
+            //ImageService imageService = new();
 
-        //         ImageADO.Insert(dbConn, image);
-        //     }
+           //imageService.PassarImages(images);
 
-        //     return Results.Ok(new { message = "Imatge pujada correctament."});
-        // }).DisableAntiforgery();
+        }).DisableAntiforgery();
     }
 }
 

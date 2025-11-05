@@ -7,66 +7,23 @@
 
 // public class ImageService
 // {
-//     // private readonly string _uploadsFolder;
-
-//     // public ImageService()
-//     // {
-//     //     _uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
-
-//     //     if (!Directory.Exists(_uploadsFolder))
-//     //         Directory.CreateDirectory(_uploadsFolder);
-//     // }
-
-//     // public async Task<Image?> ProcessAndInsertUploadedImage(DatabaseConnection dbConn, Guid porfileId, IFormFile image)
-//     // {
-
-//     //     String filePath = await SavePorfileImage(porfileId, image);
-//     //     if (image == null || image.Length == 0)
-//     //         return null;
-
-//     //     try
-//     //     {
-//     //         var tagFile = TagLib.File.Create(filePath);
-
-//     //         Console.WriteLine("=== Metadades del fitxer ===");
-//     //         Console.WriteLine($"Fitxer: {filePath}");
-//     //         Console.WriteLine($"Títol: {tagFile.Tag.Title ?? "<sense>"}");
-//     //         Console.WriteLine($"Any: {(tagFile.Tag.Year != 0 ? tagFile.Tag.Year.ToString() : "<sense>")}");
-
-//     //         Console.WriteLine("============================");
-
-//     //         Image images = new Image
-//     //         {
-//     //             ID = Guid.NewGuid(),
-//     //             Porfile_Id = porfileId,
-//     //             URL = filePath
-//     //         };
-
-//     //         return images;
-//     //     }
-//     //     catch (Exception ex)
-//     //     {
-//     //         Console.WriteLine($"Error processant fitxer: {ex.Message}");
-//     //         return null;
-//     //     }
-//     // }
-
-
-//     private static async Task<string> SavePorfileImage(Guid id, IFormFile image)
+//     public async Task<Image?> PassarImages(IFormFileCollection images)
 //     {
-//         string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+//         List<Task> process = new List<Task>();
 
-//         if (!Directory.Exists(uploadsFolder))
-//             Directory.CreateDirectory(uploadsFolder);
-
-//         string fileName = $"{id}_{Path.GetFileName(image.FileName)}";
-//         string filePath = Path.Combine(uploadsFolder, fileName);
-
-//         using (FileStream stream = new FileStream(filePath, FileMode.Create)) 
+//         for (int i = 0; i < images.Count; i++)
 //         {
-//             await image.CopyToAsync(stream);
+//             process.Add(Task.Run(() => ExtreureMetadades(images)));
 //         }
+//         Task.WhenAll(process.ToArray());
 
-//         return filePath;
+//         return images;
+//     }
+    
+//     public async Task<Image> ExtreureMetadades(IFormFileCollection images)
+//     {
+//         Console.WriteLine("Processant Metadades");
+
+//         return images;
 //     }
 // }
