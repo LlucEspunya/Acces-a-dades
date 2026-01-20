@@ -1,35 +1,31 @@
 create database Store;
 use Store
-CREATE TABLE "Familia" (
-    "ID" UNIQUEIDENTIFIER,
-	"Familia"	NVARCHAR(20),
-	"Desc"	NVARCHAR(MAX),
-	PRIMARY KEY("ID")
+
+CREATE TABLE Familias (
+    ID UNIQUEIDENTIFIER PRIMARY KEY,
+    family NVARCHAR(20),
+    description NVARCHAR(MAX)
 );
 
-CREATE TABLE "Producte" (
-	"ID"	UNIQUEIDENTIFIER,
-    "CODI"  CHAR(8),
-	"Desc"	TEXT,
-	"Preu"	DECIMAL(10, 2),
-    "DTE"    DECIMAL(10, 2),
-	"tipus"	INTEGER,
-	"id_tipus"	UNIQUEIDENTIFIER,
-	PRIMARY KEY("ID"),
-	FOREIGN KEY("id_tipus") REFERENCES "Familia (id)"
+CREATE TABLE Products (
+    ID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    Name NVARCHAR(255) NOT NULL,
+    Price FLOAT NOT NULL,
+    Family_id UNIQUEIDENTIFIER NOT NULL,
+    FOREIGN KEY (Family_id) REFERENCES Familias(ID)
 );
 
-CREATE TABLE "carritos"(
-    "ID" UNIQUEIDENTIFIER,
-    "name" varchar(10),
-    PRIMARY KEY ("ID"),
+CREATE TABLE Carritos (
+    ID UNIQUEIDENTIFIER PRIMARY KEY,
+    name VARCHAR(10)
 );
 
-CREATE TABLE "CarritoProd"(
-    "ID"    UNIQUEIDENTIFIER,
-    "ID_CARR" UNIQUEIDENTIFIER,
-    "ID_PROD" UNIQUEIDENTIFIER,
-    PRIMARY KEY ("ID"),
-    FOREIGN KEY ("ID_CARR") REFERENCES "Carrito (ID)",
-    FOREIGN KEY ("ID_PROD") REFERENCES "Producte (ID)"
+CREATE TABLE CarritoProduct (
+    ID UNIQUEIDENTIFIER PRIMARY KEY,
+    Carrito_id UNIQUEIDENTIFIER NOT NULL,
+    Product_id UNIQUEIDENTIFIER NOT NULL,
+    Quantity INT NOT NULL,
+    FOREIGN KEY (Carrito_id) REFERENCES Carritos(ID),
+    FOREIGN KEY (Product_id) REFERENCES Products(ID)
 );
+
