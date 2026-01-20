@@ -2,7 +2,7 @@ using Store.Model;
 
 namespace Store.DTO;
 
-public record ProductFamilyRequest(string family, string desc) 
+public record ProductFamilyRequest(string family, string description) 
 {
     // Guanyem CONTROL sobre com es fa la conversió
 
@@ -12,7 +12,7 @@ public record ProductFamilyRequest(string family, string desc)
         {
             ID = ID,
             family = family,
-            desc = desc
+            description = description
         };
     }
 }
