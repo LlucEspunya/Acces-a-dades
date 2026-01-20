@@ -13,44 +13,45 @@ static class ProductFamilyADO
 
         dbConn.Open();
 
-        string sql = @"INSERT INTO Familias(ID, family, desc)
-                        VALUES (@ID, @family, @desc)";
+        string sql = @"INSERT INTO Familias (ID, family, description)
+                        VALUES (@ID, @family, @description)";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         cmd.Parameters.AddWithValue("@ID", productFamily.ID);
         cmd.Parameters.AddWithValue("@family", productFamily.family);
-        cmd.Parameters.AddWithValue("@desc", productFamily.desc);
+        cmd.Parameters.AddWithValue("@description", productFamily.description);
+        cmd.ExecuteNonQuery();
         dbConn.Close();
     }
 
     public static List<ProductFamily> GetAll(DatabaseConnection dbConn)
     {
-        List<ProductFamily> PorductsFamilies = new();
+        List<ProductFamily> PorductsFamilias = new();
 
         dbConn.Open();
-        string sql = "SELECT ID, family, desc FROM Familias";
+        string sql = "SELECT ID, family, description FROM Familias";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         using SqlDataReader reader = cmd.ExecuteReader();
 
         while (reader.Read())
         {
-            PorductsFamilies.Add(new ProductFamily
+            PorductsFamilias.Add(new ProductFamily
             {
                 ID = reader.GetGuid(0),
                 family = reader.GetString(1),
-                desc = reader.GetString(2)
+                description = reader.GetString(2)
             });
         }
 
         dbConn.Close();
-        return PorductsFamilies;
+        return PorductsFamilias;
     }
 
     public static ProductFamily? GetById(DatabaseConnection dbConn, Guid ID)
     {
         dbConn.Open();
-        string sql = "SELECT ID, family, desc FROM Familias WHERE ID = @ID";
+        string sql = "SELECT ID, family, description FROM Familias WHERE ID = @ID";
 
         using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
         cmd.Parameters.AddWithValue("@ID", ID);
@@ -64,7 +65,7 @@ static class ProductFamilyADO
             {
                 ID = reader.GetGuid(0),
                 family = reader.GetString(1),
-                desc = reader.GetString(2)
+                description = reader.GetString(2)
             };
         }
 
