@@ -13,20 +13,20 @@ public static class EndpointsProductFamily
     {
         app.MapGet("/Familias", () =>
         {
-            List<ProductFamily>  productsFamily = ProductFamilyADO.GetAll(dbConn);
+            List<ProductFamily> productsFamily = ProductFamilyADO.GetAll(dbConn);
             List<ProductFamilyResponse> productFamilyResponses = new List<ProductFamilyResponse>();
-            foreach (ProductFamily productFamily in productsFamily) 
+            foreach (ProductFamily productFamily in productsFamily)
             {
                 productFamilyResponses.Add(ProductFamilyResponse.FromFamily(productFamily));
             }
-            
+
             return Results.Ok(productFamilyResponses);
         });
 
         // GET Product by id
         app.MapGet("/Familias/{ID}", (Guid ID) =>
         {
-            ProductFamily productFamily = ProductFamilyADO.GetById(dbConn, ID);
+            ProductFamily productFamily = ProductFamilyADO.GetById(dbConn, ID)!;
 
             return productFamily is not null
                 ? Results.Ok(ProductFamilyResponse.FromFamily(productFamily))
